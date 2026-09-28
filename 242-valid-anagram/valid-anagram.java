@@ -1,23 +1,20 @@
 class Solution {
-    public boolean isAnagram(String s, String t) {
-        int sLength = s.length();
-        int tLength = t.length();
 
-        if (sLength != tLength)
+    public boolean isAnagram(String s, String t) {
+
+        if (s.length() != t.length())
             return false;
 
-        String temp = t;
+        int[] count = new int[26];
 
-        for (int i = 0; i < sLength; i++) {
-            char ch = s.charAt(i);
-            int index = temp.indexOf(ch);
-            if (index != -1) {
-                // Remove the matched character
-                temp = temp.substring(0, index) + temp.substring(index + 1);
-            }
-            else {
+        for (int i = 0; i < s.length(); i++) {
+            count[s.charAt(i) - 'a']++;
+            count[t.charAt(i) - 'a']--;
+        }
+
+        for (int i = 0; i < 26; i++) {
+            if (count[i] != 0)
                 return false;
-            }
         }
         return true;
     }
