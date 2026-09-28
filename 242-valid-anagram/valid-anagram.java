@@ -1,5 +1,4 @@
 class Solution {
-
     public boolean isAnagram(String s, String t) {
 
         if (s.length() != t.length())
@@ -12,8 +11,8 @@ class Solution {
             count[t.charAt(i) - 'a']--;
         }
 
-        for (int i = 0; i < 26; i++) {
-            if (count[i] != 0)
+        for (int x : count) {
+            if (x != 0)
                 return false;
         }
         return true;
