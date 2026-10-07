@@ -2,10 +2,11 @@ class Solution {
     public String largestOddNumber(String num) {
         int len = num.length();
 
-        if((num.charAt(len - 1) - '0') % 2 != 0)
+        if((num.charAt(len - 1) - '0') % 2 != 0) {
             return num;
+        }
 
-        len -= 1;
+        len--;
 
         while(len >= 0) {
             int curr = num.charAt(len) - '0';
