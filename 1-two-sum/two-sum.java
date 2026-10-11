@@ -1,32 +1,17 @@
-import java.util.Arrays;
+import java.util.HashMap;
 
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        int len = nums.length;
-        int[][] arr = new int[len][2];
+        HashMap<Integer, Integer> map = new HashMap<>();
 
-        for(int i = 0; i < len; i++) {
-            arr[i][0] = nums[i];
-            arr[i][1] = i;
-        }
+        for(int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
 
-        Arrays.sort(arr, (a, b) -> Integer.compare(a[0], b[0]));
-
-        int i = 0;
-        int j = len - 1;
-
-        while(i < j) {
-            int sum = arr[i][0] + arr[j][0];
-
-            if(sum == target) {
-                return new int[]{arr[i][1], arr[j][1]};
+            if(map.containsKey(complement)) {
+                return new int[]{map.get(complement), i};
             }
-            else if(sum > target) {
-                j--;
-            }
-            else {
-                i++;
-            }
+
+            map.put(nums[i], i);
         }
 
         return new int[]{};
