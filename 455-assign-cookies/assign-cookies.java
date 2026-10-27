@@ -5,18 +5,16 @@ class Solution {
         Arrays.sort(g);
         Arrays.sort(s);
 
-        int i = 0;
-        int j = 0;
-        int max = 0;
+        int child = 0;
+        int cookie = 0;
 
-        while (i < g.length && j < s.length) {
-            if (s[j] >= g[i]) {
-                max++;
-                i++;
+        while (child < g.length && cookie < s.length) {
+            if (s[cookie] >= g[child]) {
+                child++;
             }
-            j++;
+            cookie++;
         }
 
-        return max;
+        return child;
     }
 }
