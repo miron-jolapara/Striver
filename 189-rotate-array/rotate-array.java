@@ -6,20 +6,10 @@ class Solution {
         k %= n;
         if (k == 0) return;
 
-        int moved = 0;
+        int[] result = new int[n];
 
-        for (int start = 0; moved < n; start++) {
-            int current = start;
-            int prev = nums[start];
-
-            do {
-                int next = (current + k) % n;
-                int temp = nums[next];
-                nums[next] = prev;
-                prev = temp;
-                current = next;
-                moved++;
-            } while (current != start);
-        }
+        System.arraycopy(nums, n - k, result, 0, k);
+        System.arraycopy(nums, 0, result, k, n - k);
+        System.arraycopy(result, 0, nums, 0, n);
     }
 }
